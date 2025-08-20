@@ -1,4 +1,3 @@
-import java.util.Objects;
 import java.util.Scanner; // for input
 import java.util.ArrayList; // for keeping track of list
 
@@ -19,16 +18,10 @@ public class JooBot {
             String all_input = scanner.nextLine();
             String[] text = all_input.split(" ", 2);
             String start_word = text[0];
+            int index;
+            Task task;
 
-            String input = start_word.equals("mark") || start_word.equals("unmark")
-                           ? start_word
-                           : all_input;
-
-            int index = start_word.equals("mark") || start_word.equals("unmark")
-                        ? Integer.parseInt(text[1]) - 1
-                        : 0;
-
-            switch (input) {
+            switch (start_word) {
                 // end program
                 case "bye":
                     System.out.println(  "    ____________________________________________________________\n"
@@ -44,6 +37,7 @@ public class JooBot {
 
                 // change status to mark
                 case "mark":
+                    index = Integer.parseInt(text[1]) - 1;
                     tasks.get(index).markDone();
                     System.out.println(
                                 "    ____________________________________________________________\n" +
@@ -54,6 +48,7 @@ public class JooBot {
 
                 // change status to unmark
                 case "unmark":
+                    index = Integer.parseInt(text[1]) - 1;
                     tasks.get(index).markNotDone();
                     System.out.println(
                                     "    ____________________________________________________________\n" +
@@ -62,23 +57,53 @@ public class JooBot {
                                     "    ____________________________________________________________");
                     break;
 
-                // add new task
+                // to do task
+                case "todo": {
+                    task = new ToDo(text[1]);
+                    tasks.add(task);
+                    printNewTask(task, tasks.size());
+                    break;
+                }
+
+                // deadline task
+                case "deadline": {
+                    String[] deadlineParts = text[1].split("/by", 2);
+                    String desc = deadlineParts[0].trim();
+                    String by = deadlineParts.length > 1 ? deadlineParts[1].trim() : "";
+                    task = new Deadline(desc, by);
+                    tasks.add(task);
+                    printNewTask(task, tasks.size());
+                    break;
+                }
+
+                // event task
+                case "event": {
+                    String[] eventParts = text[1].split("/from", 2);
+                    String desc = eventParts[0].trim();
+
+                    String[] timeParts = eventParts[1].split("/to", 2);
+                    String from = timeParts[0].trim();
+                    String to = timeParts.length > 1 ? timeParts[1].trim() : "";
+                    task = new Event(desc, from, to);
+                    tasks.add(task);
+                    printNewTask(task, tasks.size());
+                    break;
+                }
+
+                // error
                 default:
-                    addTask(input, tasks);
+                    System.out.println("Error");
             }
         }
     }
 
-    public static void addTask(String description, ArrayList<Task> list) {
-        Task task = new Task(description);
-        list.add(task);
-        System.out.printf(
-                        """
-                            ____________________________________________________________
-                            added: %s
-                            ____________________________________________________________\n
-                        """, task
-                        );
+    public static void printNewTask(Task task, int count) {
+        System.out.println(
+                "    ____________________________________________________________\n" +
+                        "     Got it. I've added this task:\n" +
+                        "       " + task + "\n" +
+                        "     Now you have " + count + " tasks in the list.\n" +
+                        "    ____________________________________________________________");
     }
 
     public static void listAllItem(ArrayList<Task> list) {
