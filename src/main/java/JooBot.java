@@ -20,7 +20,7 @@ public class JooBot {
 
                 // error check for empty input or only-space-input
                 if (all_input.isEmpty()) {
-                    throw new JooException("empty_input");
+                    throw new JooException(JooException.ErrorType.EMPTY_INPUT);
                 }
 
                 String[] text = all_input.split(" ", 2); // text = [first_word, rest_of_the_input]
@@ -31,9 +31,11 @@ public class JooBot {
                 switch (first_word) {
                     // end program
                     case "bye":
-                        System.out.println(  "    ____________________________________________________________\n"
-                                + "    Bye. Hope to see you again soon!\n"
-                                + "    ____________________________________________________________");
+                        System.out.println("""
+                                    ____________________________________________________________
+                                    Bye. Hope to see you again soon!
+                                    ____________________________________________________________
+                                """);
                         scanner.close();
                         return;
 
@@ -41,7 +43,7 @@ public class JooBot {
                     case "list":
 
                         if (tasks.isEmpty()) { // empty to-do list
-                            throw new JooException("empty_list");
+                            throw new JooException(JooException.ErrorType.EMPTY_LIST);
                         }
 
                         listAllItem(tasks);
@@ -49,9 +51,9 @@ public class JooBot {
 
                     // change status to mark
                     case "mark":
-                        if (text.length < 2) throw new JooException("no_index");
+                        if (text.length < 2) throw new JooException(JooException.ErrorType.NO_INDEX);
                         index = Integer.parseInt(text[1]) - 1;
-                        if (index < 0 || index >= tasks.size()) throw new JooException("out_of_index");
+                        if (index < 0 || index >= tasks.size()) throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
                         tasks.get(index).markDone();
                         System.out.println(
                                 "    ____________________________________________________________\n" +
@@ -62,9 +64,9 @@ public class JooBot {
 
                     // change status to unmark
                     case "unmark":
-                        if (text.length < 2) throw new JooException("no_index");
+                        if (text.length < 2) throw new JooException(JooException.ErrorType.NO_INDEX);
                         index = Integer.parseInt(text[1]) - 1;
-                        if (index < 0 || index >= tasks.size()) throw new JooException("out_of_index");
+                        if (index < 0 || index >= tasks.size()) throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
                         tasks.get(index).markNotDone();
                         System.out.println(
                                 "    ____________________________________________________________\n" +
@@ -76,7 +78,7 @@ public class JooBot {
                     // to do task
                     case "todo": {
                         if (text.length < 2 || text[1].trim().isEmpty()) {
-                            throw new JooException("missing_desc");
+                            throw new JooException(JooException.ErrorType.MISSING_DESC);
                         }
                         task = new ToDo(text[1]);
                         tasks.add(task);
@@ -87,17 +89,17 @@ public class JooBot {
                     // deadline task
                     case "deadline": {
                         if (text.length < 2 || text[1].trim().isEmpty()) {
-                            throw new JooException("missing_desc");
+                            throw new JooException(JooException.ErrorType.MISSING_DESC);
                         }
                         String[] deadlineParts = text[1].split("/by", 2);
 
                         if (deadlineParts[0].trim().isEmpty()) {
-                            throw new JooException("missing_desc");
+                            throw new JooException(JooException.ErrorType.MISSING_DESC);
                         }
                         String desc = deadlineParts[0].trim();
                         String by = deadlineParts.length > 1 ? deadlineParts[1].trim() : "";
 
-                        if (by.isEmpty()) throw new JooException("missing_by_date");
+                        if (by.isEmpty()) throw new JooException(JooException.ErrorType.MISSING_BY_DATE);
 
                         task = new Deadline(desc, by);
                         tasks.add(task);
@@ -108,13 +110,13 @@ public class JooBot {
                     // event task
                     case "event": {
                         if (text.length < 2 || text[1].trim().isEmpty()) {
-                            throw new JooException("missing_desc");
+                            throw new JooException(JooException.ErrorType.MISSING_DESC);
                         }
 
                         String[] eventParts = text[1].split("/from", 2);
 
                         if (eventParts.length < 2) {
-                            throw new JooException("missing_from_to");
+                            throw new JooException(JooException.ErrorType.MISSING_FROM_TO);
                         }
 
                         String desc = eventParts[0].trim();
@@ -122,7 +124,7 @@ public class JooBot {
                         String[] timeParts = eventParts[1].split("/to", 2);
 
                         if (timeParts.length < 2) {
-                            throw new JooException("missing_from_to");
+                            throw new JooException(JooException.ErrorType.MISSING_FROM_TO);
                         }
 
                         String from = timeParts[0].trim();
@@ -136,9 +138,9 @@ public class JooBot {
 
                     // delete a task
                     case "delete":
-                        if (text.length < 2) throw new JooException("no_index");
+                        if (text.length < 2) throw new JooException(JooException.ErrorType.NO_INDEX);
                         index = Integer.parseInt(text[1]) - 1;
-                        if (index < 0 || index >= tasks.size()) throw new JooException("out_of_index");
+                        if (index < 0 || index >= tasks.size()) throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
 
                         task = tasks.remove(index); // remove the task
                         System.out.println(
@@ -151,7 +153,7 @@ public class JooBot {
 
                     // error
                     default:
-                        throw new JooException("default");
+                        throw new JooException(JooException.ErrorType.DEFAULT);
                 }
             } catch (JooException e) {
                 System.out.println(e.getMessage());

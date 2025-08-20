@@ -1,11 +1,29 @@
 public class JooException extends Exception {
-    public JooException(String type) {
-        super(getErrorMessage(type));
+    public enum ErrorType {
+        EMPTY_INPUT,
+        EMPTY_LIST,
+        NO_INDEX,
+        OUT_OF_INDEX,
+        MISSING_DESC,
+        MISSING_BY_DATE,
+        MISSING_FROM_TO,
+        DEFAULT
     }
 
-    private static String getErrorMessage(String type) {
+    private final ErrorType type;
+
+    public JooException(ErrorType type) {
+        super(getErrorMessage(type));
+        this.type = type;
+    }
+
+    public ErrorType getType() {
+        return type;
+    }
+
+    private static String getErrorMessage(ErrorType type) {
         return switch (type) {
-            case "empty_input" ->
+            case EMPTY_INPUT ->
                     """
                         Error! Empty input is not allowed.
                         Type one of these as inputs:
@@ -16,32 +34,32 @@ public class JooException extends Exception {
                          - bye
                     """;
 
-            case "empty_list" ->
+            case EMPTY_LIST ->
                     """
                         You have an empty to do list!
                     """;
 
-            case "no_index", "out_of_index" ->
+            case NO_INDEX, OUT_OF_INDEX ->
                     """
                         Please enter an index that is of valid range.
                     """;
 
-            case "missing_desc" ->
+            case MISSING_DESC ->
                     """
                         Please enter a description of a todo task.
                     """;
 
-            case "missing_by_date" ->
+            case MISSING_BY_DATE ->
                     """
                         The deadline must have a /by <text>.
                     """;
 
-            case "missing_from_to" ->
+            case MISSING_FROM_TO ->
                     """
                         The deadline must have a /from <text> /to <text>.
                     """;
 
-            case "default" ->
+            case DEFAULT ->
                     """
                         Please enter a valid command.
                         Type one of these as inputs:
