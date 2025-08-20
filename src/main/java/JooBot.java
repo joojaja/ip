@@ -134,6 +134,21 @@ public class JooBot {
                         break;
                     }
 
+                    // delete a task
+                    case "delete":
+                        if (text.length < 2) throw new JooException("no_index");
+                        index = Integer.parseInt(text[1]) - 1;
+                        if (index < 0 || index >= tasks.size()) throw new JooException("out_of_index");
+
+                        task = tasks.remove(index); // remove the task
+                        System.out.println(
+                                "    ____________________________________________________________\n" +
+                                        "     Noted. I've removed this task:\n" +
+                                        "       " + task + "\n" +
+                                        "     Now you have " + tasks.size() + " tasks in the list.\n" +
+                                        "    ____________________________________________________________");
+                        break;
+
                     // error
                     default:
                         throw new JooException("default");
