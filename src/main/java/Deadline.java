@@ -13,6 +13,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return getTypeIcon() + getStatusIcon() + " " + getDescription() + " (by: " + by_date + ")";
+        return getTypeIcon() + super.toString()
+                + " (by: " + by_date + ")";
     }
 }
