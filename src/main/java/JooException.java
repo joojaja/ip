@@ -46,17 +46,18 @@ public class JooException extends Exception {
 
             case MISSING_DESC ->
                     """
-                        Please enter a description of a todo task.
+                        Please enter a description of the task.
                     """;
 
             case MISSING_BY_DATE ->
                     """
-                        The deadline must have a /by <text>.
+                        The deadline must have a /by <text> OR /by <D/M/YYYY HHMM>.
                     """;
 
             case MISSING_FROM_TO ->
                     """
-                        The deadline must have a /from <text> /to <text>.
+                        The deadline must have a /from <text> OR /from <D/M/YYYY HHMM>
+                                             and /to <text> OR /to <D/M/YYYY HHMM>.
                     """;
 
             case DEFAULT ->
