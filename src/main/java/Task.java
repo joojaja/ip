@@ -15,6 +15,10 @@ public abstract class Task {
         this.isDone = false;
     }
 
+    public boolean isDone() {
+        return this.isDone;
+    }
+
     public String getStatusIcon() {
         return (isDone ? "[X]" : "[ ]");
     }
@@ -22,6 +26,9 @@ public abstract class Task {
     public String getDescription() {
         return this.description;
     }
+
+    public abstract String toFileString();
+
 
     public abstract String getTypeIcon();
 

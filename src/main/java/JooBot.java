@@ -3,6 +3,10 @@ import java.util.ArrayList; // for keeping track of list
 
 public class JooBot {
     public static void main(String[] args) throws JooException {
+
+        Storage storage = new Storage("data/duke.txt");
+        ArrayList<Task> tasks = storage.load();
+
         String start =
                 """
                     ____________________________________________________________
@@ -11,7 +15,6 @@ public class JooBot {
                     ____________________________________________________________
                 """;
         System.out.println(start); // starting greeting message
-        ArrayList<Task> tasks = new ArrayList<>(); // create a dynamic list of strings
         Scanner scanner = new Scanner(System.in); // used to get input
 
         while (true) {
@@ -55,6 +58,7 @@ public class JooBot {
                         index = Integer.parseInt(text[1]) - 1;
                         if (index < 0 || index >= tasks.size()) throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
                         tasks.get(index).markDone();
+                        storage.save(tasks);
                         System.out.println(
                                 "    ____________________________________________________________\n" +
                                         "    Nice! I've marked this task as done:\n" +
@@ -68,6 +72,7 @@ public class JooBot {
                         index = Integer.parseInt(text[1]) - 1;
                         if (index < 0 || index >= tasks.size()) throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
                         tasks.get(index).markNotDone();
+                        storage.save(tasks);
                         System.out.println(
                                 "    ____________________________________________________________\n" +
                                         "    OK, I've marked this task as not done yet:\n" +
@@ -82,6 +87,7 @@ public class JooBot {
                         }
                         task = new ToDo(text[1]);
                         tasks.add(task);
+                        storage.save(tasks);
                         printNewTask(task, tasks.size());
                         break;
                     }
@@ -103,6 +109,7 @@ public class JooBot {
 
                         task = new Deadline(desc, by);
                         tasks.add(task);
+                        storage.save(tasks);
                         printNewTask(task, tasks.size());
                         break;
                     }
@@ -132,6 +139,7 @@ public class JooBot {
 
                         task = new Event(desc, from, to);
                         tasks.add(task);
+                        storage.save(tasks);
                         printNewTask(task, tasks.size());
                         break;
                     }
@@ -149,6 +157,7 @@ public class JooBot {
                                         "       " + task + "\n" +
                                         "     Now you have " + tasks.size() + " tasks in the list.\n" +
                                         "    ____________________________________________________________");
+                        storage.save(tasks);
                         break;
 
                     // error

@@ -18,4 +18,9 @@ public class Event extends Task {
         return getTypeIcon() + super.toString()
                 + " (from: " + from + " to: " + to + ")";
     }
+
+    @Override
+    public String toFileString() {
+        return "E | " + (isDone() ? "1" : "0") + " | " + getDescription() + " | " + from + " | " + to;
+    }
 }
