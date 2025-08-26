@@ -19,7 +19,7 @@ public class Storage {
         try {
             if (!Files.exists(filePath)) {
                 Files.createDirectories(filePath.getParent()); // create ./data if missing
-                Files.createFile(filePath); // create duke.txt if missing
+                Files.createFile(filePath); // create joobot.txt if missing
                 return tasks; // empty list
             }
 

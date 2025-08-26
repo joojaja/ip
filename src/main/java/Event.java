@@ -1,31 +1,11 @@
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 public class Event extends Task {
-    private LocalDateTime from;
-    private LocalDateTime to;
-    private String fromRaw;
-    private String toRaw;
+    private DateTimeValue from;
+    private DateTimeValue to;
 
     public Event(String description, String from, String to) {
         super(description);
-        this.fromRaw = from;
-        this.toRaw = to;
-
-        // try parsing from and to
-        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
-        try {
-            this.from = LocalDateTime.parse(from, inputFormat);
-        } catch (DateTimeParseException e) {
-            this.from = null;
-        }
-
-        try {
-            this.to = LocalDateTime.parse(to, inputFormat);
-        } catch (DateTimeParseException e) {
-            this.to = null;
-        }
+        this.from = new DateTimeValue(from);
+        this.to = new DateTimeValue(to);
     }
 
     @Override
@@ -35,30 +15,16 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd MMM yyyy HHmm");
-
-        String fromString = (from != null)
-                ? from.format(outputFormat)
-                : fromRaw;
-        String toString = (to != null)
-                ? to.format(outputFormat)
-                : toRaw;
-
         return getTypeIcon() + super.toString()
-                + " (from: " + fromString + " to: " + toString + ")";
+                + " (from: " + from.toDisplayString()
+                + " to: " + to.toDisplayString() + ")";
     }
 
     @Override
     public String toFileString() {
-        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd MMM yyyy HHmm");
-
-        String fromString = (from != null)
-                ? from.format(outputFormat)
-                : fromRaw;
-        String toString = (to != null)
-                ? to.format(outputFormat)
-                : toRaw;
-
-        return "E | " + (isDone() ? "1" : "0") + " | " + getDescription() + " | " + fromString + " | " + toString;
+        return "E | " + (isDone() ? "1" : "0")
+                + " | " + getDescription()
+                + " | " + from.toFileString()
+                + " | " + to.toFileString();
     }
 }

@@ -31,34 +31,29 @@ public class JooException extends Exception {
                          - deadline
                          - event
                          - list
-                         - bye
-                    """;
+                         - delete
+                         - bye""";
 
             case EMPTY_LIST ->
                     """
-                        You have an empty to do list!
-                    """;
+                        You have an empty to do list!""";
 
             case NO_INDEX, OUT_OF_INDEX ->
                     """
-                        Please enter an index that is of valid range.
-                    """;
+                        Please enter an index that is of valid range.""";
 
             case MISSING_DESC ->
                     """
-                        Please enter a description of the task.
-                    """;
+                        Please enter a description of the task.""";
 
             case MISSING_BY_DATE ->
                     """
-                        The deadline must have a /by <text> OR /by <D/M/YYYY HHMM>.
-                    """;
+                        The deadline must have a /by <text> OR /by <D/M/YYYY HHMM>.""";
 
             case MISSING_FROM_TO ->
                     """
                         The deadline must have a /from <text> OR /from <D/M/YYYY HHMM>
-                                             and /to <text> OR /to <D/M/YYYY HHMM>.
-                    """;
+                                             and /to <text> OR /to <D/M/YYYY HHMM>.""";
 
             case DEFAULT ->
                     """
@@ -68,8 +63,8 @@ public class JooException extends Exception {
                          - deadline
                          - event
                          - list
-                         - bye
-                    """;
+                         - delete
+                         - bye""";
 
             default -> "This is a different error.";
         };
