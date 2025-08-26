@@ -1,3 +1,5 @@
+package joobot.main;
+
 public class JooException extends Exception {
     public enum ErrorType {
         EMPTY_INPUT,

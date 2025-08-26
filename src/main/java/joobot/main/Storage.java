@@ -1,3 +1,10 @@
+package joobot.main;
+
+import joobot.task.Deadline;
+import joobot.task.Event;
+import joobot.task.Task;
+import joobot.task.ToDo;
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;

@@ -1,3 +1,7 @@
+package joobot.task;
+
+import joobot.main.DateTimeValue;
+
 public class Deadline extends Task {
     private DateTimeValue by;
 

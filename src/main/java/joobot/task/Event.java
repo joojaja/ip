@@ -1,3 +1,7 @@
+package joobot.task;
+
+import joobot.main.DateTimeValue;
+
 public class Event extends Task {
     private DateTimeValue from;
     private DateTimeValue to;

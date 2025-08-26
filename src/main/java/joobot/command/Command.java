@@ -1,3 +1,10 @@
+package joobot.command;
+import joobot.task.TaskList;
+import joobot.main.Ui;
+import joobot.main.Storage;
+
+import joobot.main.JooException;
+
 public abstract class Command {
     protected boolean isExit = false;
 

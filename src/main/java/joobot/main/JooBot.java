@@ -1,3 +1,8 @@
+package joobot.main;
+
+import joobot.task.TaskList;
+import joobot.command.Command;
+
 import java.util.Scanner; // for input
 
 public class JooBot {

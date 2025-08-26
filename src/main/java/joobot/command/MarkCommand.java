@@ -1,3 +1,10 @@
+package joobot.command;
+import joobot.task.TaskList;
+import joobot.task.Task;
+import joobot.main.Ui;
+import joobot.main.Storage;
+import joobot.main.JooException;
+
 public class MarkCommand extends Command {
     private final int index;
 

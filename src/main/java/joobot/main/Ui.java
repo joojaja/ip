@@ -1,3 +1,5 @@
+package joobot.main;
+import joobot.task.Task;
 import java.util.ArrayList;
 
 public class Ui {

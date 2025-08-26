@@ -1,3 +1,9 @@
+package joobot.command;
+import joobot.task.TaskList;
+import joobot.task.Task;
+import joobot.main.Ui;
+import joobot.main.Storage;
+
 public class AddCommand extends Command {
     private final Task task;
 
