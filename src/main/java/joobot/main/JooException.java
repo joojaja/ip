@@ -1,6 +1,13 @@
 package joobot.main;
-
+/**
+ * Represents an exception that can happen in JooBot application.
+ * Provides different types of errors with user-friendly messages.
+ */
 public class JooException extends Exception {
+
+    /**
+     * Different categories of possible errors that can occur in JooBot.
+     */
     public enum ErrorType {
         EMPTY_INPUT,
         EMPTY_LIST,
@@ -14,15 +21,31 @@ public class JooException extends Exception {
 
     private final ErrorType type;
 
+    /**
+     * Constructs a new {@code JooException} with the specified error type.
+     *
+     * @param type the type of error that occurred
+     */
     public JooException(ErrorType type) {
         super(getErrorMessage(type));
         this.type = type;
     }
 
+    /**
+     * Returns the type of error for this exception.
+     *
+     * @return the {@link ErrorType} associated with this exception
+     */
     public ErrorType getType() {
         return type;
     }
 
+    /**
+     * Maps each {@link ErrorType} to a corresponding human-readable error message.
+     *
+     * @param type the error type
+     * @return the error message
+     */
     private static String getErrorMessage(ErrorType type) {
         return switch (type) {
             case EMPTY_INPUT ->

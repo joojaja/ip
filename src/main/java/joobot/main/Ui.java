@@ -2,7 +2,15 @@ package joobot.main;
 import joobot.task.Task;
 import java.util.ArrayList;
 
+/**
+ * Handles all user interface output for JooBot.
+ * Responsible for displaying messages, task updates, and errors to the user.
+ */
 public class Ui {
+
+    /**
+     * Displays the welcome message when the bot starts.
+     */
     public void showWelcome() {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -12,6 +20,9 @@ public class Ui {
         );
     }
 
+    /**
+     * Displays the goodbye message when the bot exits.
+     */
     public void showGoodbye() {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -20,6 +31,12 @@ public class Ui {
         );
     }
 
+    /**
+     * Displays confirmation that a task was added.
+     *
+     * @param task  the task that was added
+     * @param count current number of tasks in the list
+     */
     public void showTaskAdded(Task task, int count) {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -29,6 +46,12 @@ public class Ui {
                         "    ____________________________________________________________");
     }
 
+    /**
+     * Displays confirmation that a task was deleted.
+     *
+     * @param task  the task that was deleted
+     * @param count current number of tasks remaining in the list
+     */
     public void showTaskDeleted(Task task, int count) {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -38,6 +61,11 @@ public class Ui {
                         "    ____________________________________________________________");
     }
 
+    /**
+     * Displays confirmation that a task was marked as done.
+     *
+     * @param task the task marked as done
+     */
     public void showTaskMarked(Task task) {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -46,6 +74,11 @@ public class Ui {
                         "    ____________________________________________________________");
     }
 
+    /**
+     * Displays confirmation that a task was unmarked (set as not done).
+     *
+     * @param task the task unmarked
+     */
     public void showTaskUnmarked(Task task) {
         System.out.println(
                 "    ____________________________________________________________\n" +
@@ -54,6 +87,11 @@ public class Ui {
                         "    ____________________________________________________________");
     }
 
+    /**
+     * Displays the list of all tasks.
+     *
+     * @param tasks the list of tasks to display
+     */
     public void showList(ArrayList<Task> tasks) {
         StringBuilder sb = new StringBuilder();
         sb.append("    ____________________________________________________________\n");
@@ -65,6 +103,11 @@ public class Ui {
         System.out.println(sb);
     }
 
+    /**
+     * Displays an error message.
+     *
+     * @param message the error message to display
+     */
     public void showError(String message) {
         System.out.println(message);
     }

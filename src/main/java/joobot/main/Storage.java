@@ -14,13 +14,28 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles saving and loading tasks from the local file system.
+ * Provides persistent storage for tasks between sessions.
+ */
 public class Storage {
     private final Path filePath;
 
+    /**
+     * Creates a Storage object tied to a specific file path.
+     *
+     * @param filePath path to the storage file
+     */
     public Storage(String filePath) {
         this.filePath = Paths.get(filePath);
     }
 
+    /**
+     * Loads all tasks from the storage file.
+     * If the file does not exist, it is created and an empty list is returned.
+     *
+     * @return list of tasks loaded from file, or empty list if file does not exist
+     */
     public ArrayList<Task> load() {
         ArrayList<Task> tasks = new ArrayList<>();
         try {
@@ -46,6 +61,12 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves all tasks into the storage file.
+     * Overwrites any existing content.
+     *
+     * @param tasks list of tasks to save
+     */
     public void save(ArrayList<Task> tasks) {
         try (FileWriter writer = new FileWriter(filePath.toFile(), false)) {
             for (Task task : tasks) {
@@ -56,6 +77,13 @@ public class Storage {
         }
     }
 
+    /**
+     * Parses a line from the storage file into a {@link Task} object.
+     * Supports {@link ToDo}, {@link Deadline}, and {@link Event} tasks.
+     *
+     * @param line line from storage file
+     * @return Task object if successfully parsed, or {@code null} if corrupted
+     */
     private Task parseTask(String line) {
         try {
             String[] parts = line.split(" \\| ");

@@ -12,8 +12,19 @@ import joobot.task.Deadline;
 import joobot.task.Event;
 import joobot.task.ToDo;
 
+/**
+ * Handles parsing of user input into {@link Command} objects.
+ * Encapsulates the logic for interpreting task-related commands and date strings.
+ */
 public class Parser {
 
+    /**
+     * Parses user input into the appropriate {@link Command}.
+     *
+     * @param input the raw user input string
+     * @return a {@link Command} representing the user’s action
+     * @throws JooException if the input is invalid or missing required fields
+     */
     public static Command parse(String input) throws JooException {
         if (input == null || input.trim().isEmpty()) {
             throw new JooException(JooException.ErrorType.EMPTY_INPUT);
@@ -79,6 +90,7 @@ public class Parser {
             throw new JooException(JooException.ErrorType.DEFAULT);
         }
     }
+
 
     private static int parseIndex(String arg) throws JooException {
         try {
