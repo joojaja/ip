@@ -3,7 +3,6 @@ package joobot.main;
 import org.junit.jupiter.api.Test;
 import joobot.command.Command;
 import joobot.command.AddCommand;
-import joobot.task.TaskList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
