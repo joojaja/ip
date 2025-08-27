@@ -56,6 +56,7 @@ public class JooException extends Exception {
                          - deadline
                          - event
                          - list
+                         - find
                          - delete
                          - bye""";
 
@@ -88,6 +89,7 @@ public class JooException extends Exception {
                          - deadline
                          - event
                          - list
+                         - find
                          - delete
                          - bye""";
 
