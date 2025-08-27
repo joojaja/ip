@@ -1,6 +1,8 @@
 package joobot.task;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Represents a list of tasks in the Joo application.
@@ -58,6 +60,12 @@ public class TaskList {
      */
     public int size() {
         return tasks.size();
+    }
+
+    public List<Task> findTasks(String keyword) {
+        return tasks.stream()
+                .filter(task -> task.getDescription().toLowerCase().contains(keyword.toLowerCase()))
+                .collect(Collectors.toList());
     }
 
     public ArrayList<Task> getAllTasks() {

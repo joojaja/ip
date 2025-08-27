@@ -21,6 +21,19 @@ public class Ui {
     }
 
     /**
+     * Displays a generic message inside a box format.
+     *
+     * @param message the message to display
+     */
+    public void showMessage(String message) {
+        System.out.println(
+                        "    ____________________________________________________________\n" +
+                        "     " + message + "\n" +
+                        "    ____________________________________________________________"
+        );
+    }
+
+    /**
      * Displays the goodbye message when the bot exits.
      */
     public void showGoodbye() {

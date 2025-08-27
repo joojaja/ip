@@ -1,12 +1,6 @@
 package joobot.main;
 
-import joobot.command.Command;
-import joobot.command.AddCommand;
-import joobot.command.DeleteCommand;
-import joobot.command.MarkCommand;
-import joobot.command.UnmarkCommand;
-import joobot.command.ExitCommand;
-import joobot.command.ListCommand;
+import joobot.command.*;
 
 import joobot.task.Deadline;
 import joobot.task.Event;
@@ -85,6 +79,12 @@ public class Parser {
             }
             return new AddCommand(new Event(texts[0].trim(), times[0].trim(), times[1].trim()));
         }
+
+        case "find":
+            if (parts.length < 2 || parts[1].trim().isEmpty()) {
+                throw new JooException(JooException.ErrorType.MISSING_DESC);
+            }
+            return new FindCommand(parts[1].trim());
 
         default:
             throw new JooException(JooException.ErrorType.DEFAULT);
