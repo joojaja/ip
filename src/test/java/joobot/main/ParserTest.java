@@ -1,10 +1,14 @@
 package joobot.main;
 
-import org.junit.jupiter.api.Test;
-import joobot.command.Command;
-import joobot.command.AddCommand;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+import joobot.command.AddCommand;
+import joobot.command.Command;
+
 
 
 public class ParserTest {

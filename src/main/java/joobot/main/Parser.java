@@ -1,7 +1,13 @@
 package joobot.main;
 
-import joobot.command.*;
-
+import joobot.command.AddCommand;
+import joobot.command.Command;
+import joobot.command.DeleteCommand;
+import joobot.command.ExitCommand;
+import joobot.command.FindCommand;
+import joobot.command.ListCommand;
+import joobot.command.MarkCommand;
+import joobot.command.UnmarkCommand;
 import joobot.task.Deadline;
 import joobot.task.Event;
 import joobot.task.ToDo;
@@ -36,30 +42,40 @@ public class Parser {
             return new ListCommand();
 
         case "mark": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.NO_INDEX);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.NO_INDEX);
+            }
             int index = parseIndex(args);
             return new MarkCommand(index);
         }
 
         case "unmark": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.NO_INDEX);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.NO_INDEX);
+            }
             int index = parseIndex(args);
             return new UnmarkCommand(index);
         }
 
         case "delete": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.NO_INDEX);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.NO_INDEX);
+            }
             int index = parseIndex(args);
             return new DeleteCommand(index);
         }
 
         case "todo": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.MISSING_DESC);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.MISSING_DESC);
+            }
             return new AddCommand(new ToDo(args));
         }
 
         case "deadline": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.MISSING_DESC);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.MISSING_DESC);
+            }
             String[] texts = args.split("/by", 2);
             if (texts.length < 2 || texts[1].trim().isEmpty()) {
                 throw new JooException(JooException.ErrorType.MISSING_BY_DATE);
@@ -68,7 +84,9 @@ public class Parser {
         }
 
         case "event": {
-            if (args.isEmpty()) throw new JooException(JooException.ErrorType.MISSING_DESC);
+            if (args.isEmpty()) {
+                throw new JooException(JooException.ErrorType.MISSING_DESC);
+            }
             String[] texts = args.split("/from", 2);
             if (texts.length < 2 || texts[1].trim().isEmpty()) {
                 throw new JooException(JooException.ErrorType.MISSING_FROM_TO);

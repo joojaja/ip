@@ -1,10 +1,12 @@
 package joobot.command;
-import joobot.task.TaskList;
-import joobot.main.Ui;
-import joobot.main.Storage;
-
 import joobot.main.JooException;
+import joobot.main.Storage;
+import joobot.main.Ui;
+import joobot.task.TaskList;
 
+/**
+ * Represents a abstract class for command
+ */
 public abstract class Command {
     protected boolean isExit = false;
 

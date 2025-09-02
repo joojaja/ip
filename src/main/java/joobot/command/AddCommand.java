@@ -1,9 +1,12 @@
 package joobot.command;
-import joobot.task.TaskList;
-import joobot.task.Task;
-import joobot.main.Ui;
 import joobot.main.Storage;
+import joobot.main.Ui;
+import joobot.task.Task;
+import joobot.task.TaskList;
 
+/**
+ * Represents a command that adds a task
+ */
 public class AddCommand extends Command {
     private final Task task;
 

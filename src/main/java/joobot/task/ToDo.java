@@ -1,5 +1,9 @@
 package joobot.task;
 
+/**
+ * Represents an todo task with a description.
+ * Subclasses of {@code Task} define specific task types (e.g., ToDo, Deadline, Event).
+ */
 public class ToDo extends Task {
     public ToDo(String description) {
         super(description);
