@@ -1,8 +1,11 @@
 package joobot.command;
-import joobot.task.TaskList;
-import joobot.main.Ui;
 import joobot.main.Storage;
+import joobot.main.Ui;
+import joobot.task.TaskList;
 
+/**
+ * Represents a command that exits the program
+ */
 public class ExitCommand extends Command {
     public ExitCommand() {
         this.isExit = true;

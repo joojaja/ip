@@ -1,10 +1,5 @@
 package joobot.main;
 
-import joobot.task.Deadline;
-import joobot.task.Event;
-import joobot.task.Task;
-import joobot.task.ToDo;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -13,6 +8,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import joobot.task.Deadline;
+import joobot.task.Event;
+import joobot.task.Task;
+import joobot.task.ToDo;
 
 /**
  * Handles saving and loading tasks from the local file system.

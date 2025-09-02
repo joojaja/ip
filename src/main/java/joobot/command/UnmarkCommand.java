@@ -1,10 +1,13 @@
 package joobot.command;
-import joobot.task.TaskList;
-import joobot.task.Task;
-import joobot.main.Ui;
-import joobot.main.Storage;
 import joobot.main.JooException;
+import joobot.main.Storage;
+import joobot.main.Ui;
+import joobot.task.Task;
+import joobot.task.TaskList;
 
+/**
+ * Represents a command that unmarks a task
+ */
 public class UnmarkCommand extends Command {
     private final int index;
 

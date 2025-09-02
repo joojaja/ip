@@ -62,6 +62,11 @@ public class TaskList {
         return tasks.size();
     }
 
+    /**
+     * Returns the tasks that have the keyword
+     *
+     * @return list of all similar tasks
+     */
     public List<Task> findTasks(String keyword) {
         return tasks.stream()
                 .filter(task -> task.getDescription().toLowerCase().contains(keyword.toLowerCase()))

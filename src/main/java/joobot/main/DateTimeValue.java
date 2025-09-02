@@ -13,13 +13,12 @@ import java.time.format.DateTimeParseException;
  * <code>d/M/yyyy HHmm</code>, and formatting them for display and file storage.
  */
 public class DateTimeValue {
-    private final String raw;
-    private final LocalDateTime dateTime;
-
     private static final DateTimeFormatter FORMAT =
             DateTimeFormatter.ofPattern("d/M/yyyy HHmm");
     private static final DateTimeFormatter DISPLAY_FORMAT =
             DateTimeFormatter.ofPattern("dd MMM yyyy HHmm");
+    private final String raw;
+    private final LocalDateTime dateTime;
 
     /**
      * Constructs a {@code DateTimeValue} from the given input string.

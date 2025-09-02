@@ -1,9 +1,8 @@
 package joobot.main;
-
-import joobot.task.TaskList;
-import joobot.command.Command;
-
 import java.util.Scanner; // for input
+
+import joobot.command.Command;
+import joobot.task.TaskList;
 
 /**
  * The main class for running the JooBot application.
