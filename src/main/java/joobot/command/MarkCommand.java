@@ -1,5 +1,4 @@
 package joobot.command;
-import joobot.main.JooException;
 import joobot.main.Storage;
 import joobot.task.Task;
 import joobot.task.TaskList;

@@ -2,7 +2,6 @@ package joobot.command;
 import java.util.List;
 
 import joobot.main.Storage;
-import joobot.main.Ui;
 import joobot.task.Task;
 import joobot.task.TaskList;
 
