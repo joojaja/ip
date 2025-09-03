@@ -1,5 +1,4 @@
 package joobot.main;
-import java.util.Scanner; // for input
 
 import joobot.command.Command;
 import joobot.task.TaskList;
@@ -14,48 +13,28 @@ import joobot.task.TaskList;
 public class JooBot {
     private final Storage storage;
     private final TaskList tasks;
-    private final Ui ui;
-
     /**
      * Creates a JooBot instance with the given file path for storage.
      *
      * @param filePath the file path where tasks are stored
      */
     public JooBot(String filePath) {
-        ui = new Ui();
         storage = new Storage(filePath);
         tasks = new TaskList(storage.load());
     }
 
     /**
-     * Runs the chatbot, reading user input until an exit command is given.
-     * <p>
-     * The method parses user input into {@link Command} objects,
-     * executes them, and handles any errors during execution.
-     */
-    public void run() {
-        ui.showWelcome();
-        boolean isExit = false;
-        Scanner scanner = new Scanner(System.in);
-
-        while (!isExit) {
-            try {
-                String fullCommand = scanner.nextLine();
-                Command command = Parser.parse(fullCommand);
-                command.execute(tasks, ui, storage);
-                isExit = command.isExit();
-            } catch (JooException e) {
-                ui.showError(e.getMessage());
-            }
-        }
-    }
-
-    /**
-     * The entry point of the JooBot application.
+     * Generates a response for the GUI.
      *
-     * @param args command-line arguments (unused)
+     * @param input user input string
+     * @return JooBot’s response
      */
-    public static void main(String[] args) {
-        new JooBot("data/joobot.txt").run();
+    public String getResponse(String input) {
+        try {
+            Command command = Parser.parse(input);
+            return command.execute(tasks, storage);
+        } catch (JooException e) {
+            return e.getMessage();
+        }
     }
 }

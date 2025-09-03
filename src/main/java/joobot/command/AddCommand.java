@@ -1,6 +1,5 @@
 package joobot.command;
 import joobot.main.Storage;
-import joobot.main.Ui;
 import joobot.task.Task;
 import joobot.task.TaskList;
 
@@ -15,9 +14,10 @@ public class AddCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Storage storage) {
         tasks.addTask(task);
         storage.save(tasks.getAllTasks());
-        ui.showTaskAdded(task, tasks.size());
+        return "Got it. I've added this task:\n  " + task
+                + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 }

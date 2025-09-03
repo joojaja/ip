@@ -1,7 +1,5 @@
 package joobot.command;
-import joobot.main.JooException;
 import joobot.main.Storage;
-import joobot.main.Ui;
 import joobot.task.Task;
 import joobot.task.TaskList;
 
@@ -16,10 +14,13 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JooException {
-        Task t = tasks.getTask(index);
-        t.markNotDone();
+    public String execute(TaskList tasks, Storage storage) {
+        if (index < 0 || index >= tasks.size()) {
+            return "Invalid task index.";
+        }
+        Task task = tasks.getAllTasks().get(index);
+        task.markNotDone();
         storage.save(tasks.getAllTasks());
-        ui.showTaskUnmarked(t);
+        return "OK, I've marked this task as not done yet:\n  " + task;
     }
 }

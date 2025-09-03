@@ -1,7 +1,5 @@
 package joobot.command;
-import joobot.main.JooException;
 import joobot.main.Storage;
-import joobot.main.Ui;
 import joobot.task.Task;
 import joobot.task.TaskList;
 
@@ -16,12 +14,13 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JooException {
+    public String execute(TaskList tasks, Storage storage) {
         if (index < 0 || index >= tasks.size()) {
-            throw new JooException(JooException.ErrorType.OUT_OF_INDEX);
+            return "Invalid task index.";
         }
-        Task removed = tasks.deleteTask(index);
+        Task removed = tasks.remove(index);
         storage.save(tasks.getAllTasks());
-        ui.showTaskDeleted(removed, tasks.size());
+        return "Noted. I've removed this task:\n  " + removed
+                + "\nNow you have " + tasks.size() + " tasks in the list.";
     }
 }

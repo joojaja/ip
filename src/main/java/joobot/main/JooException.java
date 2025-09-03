@@ -76,10 +76,10 @@ public class JooException extends Exception {
             """
                 The deadline must have a /by <text> OR /by <D/M/YYYY HHMM>.""";
 
-        case MISSING_FROM_TO ->
-            """
-                The deadline must have a /from <text> OR /from <D/M/YYYY HHMM>
-                                     and /to <text> OR /to <D/M/YYYY HHMM>.""";
+        case MISSING_FROM_TO -> """
+                The deadline must have a /from <text> OR /from <D/M/YYYY HHMM> and"""
+                + """
+                /to <text> OR /to <D/M/YYYY HHMM>.""";
 
         case DEFAULT ->
             """

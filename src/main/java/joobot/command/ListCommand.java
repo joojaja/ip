@@ -1,18 +1,26 @@
 package joobot.command;
+import java.util.List;
+
 import joobot.main.JooException;
 import joobot.main.Storage;
-import joobot.main.Ui;
+import joobot.task.Task;
 import joobot.task.TaskList;
 
 /**
- * Represents a command that lists all tasks
+ * Lists all tasks in the task list.
  */
 public class ListCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws JooException {
-        if (tasks.size() == 0) {
-            throw new JooException(JooException.ErrorType.EMPTY_LIST);
+    public String execute(TaskList tasks, Storage storage) throws JooException {
+        List<Task> all = tasks.getAllTasks();
+        if (all.isEmpty()) {
+            return "Your task list is empty!";
         }
-        ui.showList(tasks.getAllTasks());
+
+        StringBuilder sb = new StringBuilder("Here are the tasks in your list:\n");
+        for (int i = 0; i < all.size(); i++) {
+            sb.append(i + 1).append(". ").append(all.get(i)).append("\n");
+        }
+        return sb.toString().trim();
     }
 }
