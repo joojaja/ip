@@ -1,4 +1,7 @@
 T | 0 | test
-E | 1 | a | tdy | tmr
 T | 0 | read book
 D | 0 | return book | June 6th
+T | 0 | test
+T | 0 | test2
+D | 0 | deadline | today
+E | 0 | test | today | tmr

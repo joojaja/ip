@@ -63,6 +63,17 @@ public class TaskList {
     }
 
     /**
+     * Removes the task at the specified index.
+     *
+     * @param index index of the task to remove
+     * @return the removed Task
+     * @throws IndexOutOfBoundsException if index is invalid
+     */
+    public Task remove(int index) {
+        return tasks.remove(index);
+    }
+
+    /**
      * Returns the tasks that have the keyword
      *
      * @return list of all similar tasks
