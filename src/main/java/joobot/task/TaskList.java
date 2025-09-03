@@ -14,7 +14,6 @@ public class TaskList {
     /**
      * Constructs a {@code TaskList} with the given tasks.
      *
-     * @param tasks the list of tasks
      */
     public TaskList() {
         this.tasks = new ArrayList<>();
@@ -31,6 +30,16 @@ public class TaskList {
      */
     public void addTask(Task task) {
         tasks.add(task);
+    }
+
+    /**
+     * Add task using varargs
+     * @param tasksToAdd list of tasks
+     */
+    public void add(Task... tasksToAdd) {
+        for (Task t : tasksToAdd) {
+            tasks.add(t);
+        }
     }
 
     /**
