@@ -93,7 +93,7 @@ public class JooException extends Exception {
                  - delete
                  - bye""";
 
-        default -> "This is a different error.";
+        default -> "This is a different error."; // should not reach this stage
         };
     }
 }
