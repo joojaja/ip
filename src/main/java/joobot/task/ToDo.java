@@ -14,6 +14,11 @@ public class ToDo extends Task {
         return "[T]";
     }
 
+    /**
+     * Returns a string representation of this todo task for display.
+     *
+     * @return The formatted event task string.
+     */
     @Override
     public String toString() {
         return getTypeIcon() + super.toString();
