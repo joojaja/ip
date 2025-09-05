@@ -24,6 +24,11 @@ public class ToDo extends Task {
         return getTypeIcon() + super.toString();
     }
 
+    /**
+     * Returns the file format string for this todo task.
+     *
+     * @return The string in file storage format: "T | status | description".
+     */
     @Override
     public String toFileString() {
         return "T | " + (isDone() ? "1" : "0") + " | " + getDescription();
