@@ -4,7 +4,7 @@ import joobot.task.Task;
 import joobot.task.TaskList;
 
 /**
- * Represents a command that adds a task
+ * Represents a command that adds a task to the program
  */
 public class AddCommand extends Command {
     private final Task task;
