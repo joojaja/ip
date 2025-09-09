@@ -6,7 +6,7 @@ import joobot.main.DateTimeValue;
  * Represents a deadline task with a due date.
  */
 public class Deadline extends Task {
-    private DateTimeValue by;
+    private final DateTimeValue by;
 
     /**
      * Constructs a new {@code Deadline} task with a description and due date.
