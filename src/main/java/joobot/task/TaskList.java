@@ -79,6 +79,7 @@ public class TaskList {
      * @throws IndexOutOfBoundsException if index is invalid
      */
     public Task remove(int index) {
+        assert index >= 0 && index < tasks.size() : "Index out of bounds for remove";
         return tasks.remove(index);
     }
 
