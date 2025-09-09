@@ -7,6 +7,7 @@ import joobot.command.ExitCommand;
 import joobot.command.FindCommand;
 import joobot.command.ListCommand;
 import joobot.command.MarkCommand;
+import joobot.command.SortCommand;
 import joobot.command.UnmarkCommand;
 import joobot.task.Deadline;
 import joobot.task.Event;
@@ -103,6 +104,9 @@ public class Parser {
                 throw new JooException(JooException.ErrorType.MISSING_DESC);
             }
             return new FindCommand(parts[1].trim());
+
+        case "sort":
+            return new SortCommand();
 
         default:
             throw new JooException(JooException.ErrorType.DEFAULT);
