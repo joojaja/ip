@@ -35,6 +35,7 @@ public class DateTimeValue {
             parsed = LocalDateTime.parse(input, FORMAT);
         } catch (DateTimeParseException e) {
             // not a date, leave null
+            // error
         }
         this.dateTime = parsed;
     }
