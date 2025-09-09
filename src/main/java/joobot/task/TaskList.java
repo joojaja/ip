@@ -43,6 +43,10 @@ public class TaskList {
         }
     }
 
+    /**
+     * Sort task list based on comparator
+     * @param comparator
+     */
     public void sort(Comparator<Task> comparator) {
         tasks.sort(comparator);
     }
