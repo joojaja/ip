@@ -59,6 +59,8 @@ public class JooException extends Exception {
                  - find
                  - delete
                  - sort
+                 - mark
+                 - unmark
                  - bye""";
 
         case EMPTY_LIST ->
@@ -93,6 +95,8 @@ public class JooException extends Exception {
                  - find
                  - delete
                  - sort
+                 - mark
+                 - unmark
                  - bye""";
 
         default -> "This is a different error."; // should not reach this stage
