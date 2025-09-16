@@ -1,6 +1,6 @@
 # JooBot User Guide
 
-![Alt text](./Ui.png)
+![Alt text](./docs/Ui.png)
 
 ## Joobot
 JooBot is a simple chat-bot application to keep track of tasks.
@@ -74,8 +74,8 @@ Command Format: `find {description}`
 - Prints all tasks that has that description
 
 ### Command Summary
-| Command        | Format                                        | Example                        |
-|----------------|-----------------------------------------------|--------------------------------|
+| Command        | Format                                        | Example                          |
+|----------------|-----------------------------------------------|----------------------------------|
 | Add Todo       | `todo {description}`                          | `todo read book`                 |
 | Add Deadline   | `deadline {description} /by {date}`           | `deadline homework /by tomorrow` |
 | Add Event      | `event {description} /from {date} /to {date}` | `event camp /from wed /to fri`   |
