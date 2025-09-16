@@ -35,6 +35,11 @@ public class DialogBox extends HBox {
 
         dialog.setText(text);
         displayPicture.setImage(img);
+
+        /* Make profile picture circular */
+        double radius = Math.min(displayPicture.getFitWidth(), displayPicture.getFitHeight()) / 2;
+        javafx.scene.shape.Circle clip = new javafx.scene.shape.Circle(radius, radius, radius);
+        displayPicture.setClip(clip);
     }
 
     /** Flips the dialog box so that the image is on the left. */
