@@ -34,7 +34,7 @@ public class TaskList {
     }
 
     /**
-     * Add task using varargs
+     * Adds a task using varargs
      * @param tasksToAdd list of tasks
      */
     public void add(Task... tasksToAdd) {
@@ -44,7 +44,7 @@ public class TaskList {
     }
 
     /**
-     * Sort task list based on comparator
+     * Sorts a task list based on comparator
      * @param comparator
      */
     public void sort(Comparator<Task> comparator) {

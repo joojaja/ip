@@ -34,6 +34,12 @@ public class MainWindow extends AnchorPane {
     /** Injects the JooBot instance. */
     public void setJooBot(JooBot b) {
         joobot = b;
+
+        // Add intro message from JooBot at startup
+        String intro = "Hi Traveller!\nHow can I assist you today?";
+        dialogContainer.getChildren().add(
+                DialogBox.getBotDialog(intro, botImage)
+        );
     }
 
     /**
