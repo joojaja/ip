@@ -74,14 +74,12 @@ Command Format: `find {description}`
 - Prints all tasks that has that description
 
 ### Command Summary
-| Command        | Format                                        | Example                          |
-|----------------|-----------------------------------------------|----------------------------------|
-| Add Todo       | `todo {description}`                          | `todo read book`                 |
-| Add Deadline   | `deadline {description} /by {date}`           | `deadline homework /by tomorrow` |
-| Add Event      | `event {description} /from {date} /to {date}` | `event camp /from wed /to fri`   |
-| List all Tasks | `list`                                        | `list`                           |
-| Delete Task    | `delete {index}`                              | `delete 1`                       |
-| Mark Task      | `mark {index}`                                | `mark 1`                         |
-| Unmark Task    | `unmark {index}`                              | `unmark 1`                       |
-| Sort Tasks     | `sort`                                        | `sort`                           |
-| Find Task      | `find {description}`                          | `find book`                      |
+Add Todo       | `todo {description}`                          | `todo read book`                 |<br><br>
+Add Deadline   | `deadline {description} /by {date}`           | `deadline homework /by tomorrow` |<br><br>
+Add Event      | `event {description} /from {date} /to {date}` | `event camp /from wed /to fri`   |<br><br>
+List all Tasks | `list`                                        | `list`                           |<br><br>
+Delete Task    | `delete {index}`                              | `delete 1`                       |<br><br>
+Mark Task      | `mark {index}`                                | `mark 1`                         |<br><br>
+Unmark Task    | `unmark {index}`                              | `unmark 1`                       |<br><br>
+Sort Tasks     | `sort`                                        | `sort`                           |<br><br>
+Find Task      | `find {description}`                          | `find book`                      |<br><br>
